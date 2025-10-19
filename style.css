@@ -1,0 +1,331 @@
+/* ================== RESET E BASE ================== */
+:root {
+  --neon: #00ffff;
+  --neon-glow: 0 0 10px var(--neon), 0 0 20px var(--neon);
+  --bg-dark: rgba(0, 0, 0, 0.6);
+  --bg-header: rgba(0, 0, 0, 0.5);
+  --transition: 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+/* ================== HEADER ================== */
+header {
+  text-align: center;
+  padding: 2rem 1rem 3rem;
+  background: var(--bg-header);
+  border-bottom: 2px solid var(--neon);
+  position: relative;
+}
+
+.container-header {
+  position: relative;
+}
+
+.foto-perfil {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid var(--neon);
+  object-fit: cover;
+  box-shadow: 0 0 15px var(--neon);
+}
+
+h1, h2 {
+  color: var(--neon);
+  text-shadow: var(--neon-glow);
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--neon);
+  margin-bottom: 1.2rem;
+}
+
+/* ================== MENU ================== */
+.menu {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+.menu li a {
+  color: var(--neon);
+  text-decoration: none;
+  font-weight: bold;
+  transition: var(--transition);
+}
+
+.menu li a:hover {
+  transform: scale(1.1);
+  text-shadow: var(--neon-glow);
+}
+
+/* Botão hamburguer */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  margin: 1rem auto 0;
+  width: fit-content;
+  z-index: 1101;
+}
+
+.menu-toggle span {
+  background-color: var(--neon);
+  height: 3px;
+  width: 28px;
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: var(--transition);
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menu mobile */
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+
+  #navbar {
+    display: none;
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    background: rgba(10, 20, 25, 0.95);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    z-index: 1100;
+    gap: 2rem;
+  }
+
+  #navbar.active { display: flex; }
+
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .menu li a {
+    font-size: 1.6rem;
+  }
+}
+
+/* ================== CONTEÚDO PRINCIPAL ================== */
+main {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.section-card {
+  background: var(--bg-dark);
+  border-radius: 15px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 0 20px var(--neon);
+}
+
+/* ================== CARDS ================== */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.card {
+  background: var(--bg-header);
+  border: 1px solid var(--neon);
+  border-radius: 10px;
+  padding: 1rem;
+  flex: 1 1 250px;
+  min-width: 250px;
+  box-shadow: 0 0 10px var(--neon);
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px var(--neon);
+}
+
+/* ================== CARROSSEL DE FOTOS ================== */
+.carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.8s ease-in-out;
+  gap: 10px;
+}
+
+/* Desktop → 3 imagens por vez */
+.carousel-item {
+  flex: 0 0 33.3333%;
+  position: relative;
+}
+
+.carousel-item img {
+  width: 100%;
+  height: auto;          /* altura automática */
+  aspect-ratio: 4/3;      /* proporção largura/altura */
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
+/* ================== LEGENDAS ================== */
+.caption {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--neon);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-align: center;
+  width: calc(100% - 20px);
+}
+
+/* Botões do carrossel */
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 24px;
+  z-index: 10;
+  transition: var(--transition);
+}
+
+.carousel-button:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev { left: 10px; }
+.carousel-button.next { right: 10px; }
+
+/* ================== RESPONSIVIDADE ================== */
+/* Tablet → 2 imagens por vez */
+@media (max-width: 1024px) {
+  .carousel-item { flex: 0 0 50%; }
+  .carousel-item img { aspect-ratio: 4/3; }
+}
+
+/* Celular → 1 imagem por vez */
+@media (max-width: 768px) {
+  .carousel-item { flex: 0 0 100%; }
+  .carousel-item img { aspect-ratio: 4/3; }
+  .carousel-button {
+    padding: 8px;
+    font-size: 20px;
+  }
+}
+
+/* ================== FOOTER ================== */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 2px solid var(--neon);
+}
+
+footer a {
+  color: var(--neon);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+footer a:hover {
+  text-shadow: var(--neon-glow);
+}
+
+.footer-frase {
+  margin-top: 1rem;
+  font-style: italic;
+  color: var(--neon);
+}
+
+/* ================== BOTÃO VOLTAR AO TOPO ================== */
+#topButton {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: var(--neon);
+  color: #000;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 0 10px var(--neon);
+  transition: var(--transition);
+  z-index: 1000;
+}
+
+#topButton:hover {
+  background-color: #00cccc;
+}
+
+/* ================== ANIMAÇÃO ================== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
