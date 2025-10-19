@@ -332,15 +332,23 @@ footer a:hover {
 
 /* ================== Projeto Mente Jovem ================== */
 .btn-projeto {
-  color: white; /* cor normal do link */
-  background-color: transparent; /* ou outra cor de fundo, se quiser */
+  color: WhiteSmoke;
+  background-color: transparent;
+  border: 2px solid WhiteSmoke;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: var(--transition);
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
 .btn-projeto:hover {
-  color: Orchid; /* cor ao passar o mouse */
-  text-shadow: PaleGoldenrod; /* opcional, efeito neon */
+  color: Yellow;
+  background-color: rgba(255, 255, 0, 0.2);
+  text-shadow: 0 0 10px Yellow;
+  border-color: Yellow;
+  cursor: pointer;
 }
+
 
